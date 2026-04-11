@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "180-ring",
+  "type": "registry:ui",
+  "description": "180 ring animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/180-ring.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface Loader180RingProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * 180 Ring Loader\n * CSS-animated SVG loader icon\n */\nexport function Loader180Ring({\n  size = 24,\n  className,\n  ...props\n}: Loader180RingProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"180 Ring loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_aj0A{transform-origin:center;animation:spinner_KYSC .75s infinite linear}@keyframes spinner_KYSC{100%{transform:rotate(360deg)}}`}} /><path d=\"M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z\" className=\"spinner_aj0A\"/>\n    </svg>\n  );\n}\n\nexport default Loader180Ring;\n"
+    }
+  ]
+}

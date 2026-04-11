@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "blocks-shuffle-3",
+  "type": "registry:ui",
+  "description": "blocks shuffle 3 animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/blocks-shuffle-3.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface BlocksShuffle3LoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Blocks Shuffle 3 Loader\n * CSS-animated SVG loader icon\n */\nexport function BlocksShuffle3Loader({\n  size = 24,\n  className,\n  ...props\n}: BlocksShuffle3LoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Blocks Shuffle 3 loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_9y7u{animation:spinner_fUkk 2.4s linear infinite;animation-delay:-2.4s}.spinner_DF2s{animation-delay:-1.6s}.spinner_q27e{animation-delay:-.8s}@keyframes spinner_fUkk{8.33%{x:13px;y:1px}25%{x:13px;y:1px}33.3%{x:13px;y:13px}50%{x:13px;y:13px}58.33%{x:1px;y:13px}75%{x:1px;y:13px}83.33%{x:1px;y:1px}}`}} /><rect className=\"spinner_9y7u\" x=\"1\" y=\"1\" rx=\"1\" width=\"10\" height=\"10\"/><rect className=\"spinner_9y7u spinner_DF2s\" x=\"1\" y=\"1\" rx=\"1\" width=\"10\" height=\"10\"/><rect className=\"spinner_9y7u spinner_q27e\" x=\"1\" y=\"1\" rx=\"1\" width=\"10\" height=\"10\"/>\n    </svg>\n  );\n}\n\nexport default BlocksShuffle3Loader;\n"
+    }
+  ]
+}

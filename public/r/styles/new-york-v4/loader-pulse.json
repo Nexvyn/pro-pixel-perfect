@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "pulse",
+  "type": "registry:ui",
+  "description": "pulse animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/pulse.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface PulseLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Pulse Loader\n * CSS-animated SVG loader icon\n */\nexport function PulseLoader({\n  size = 24,\n  className,\n  ...props\n}: PulseLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Pulse loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_7NYg{animation:spinner_0KQs 1.2s cubic-bezier(0.52,.6,.25,.99) infinite}@keyframes spinner_0KQs{0%{r:0;opacity:1}100%{r:11px;opacity:0}}`}} /><circle className=\"spinner_7NYg\" cx=\"12\" cy=\"12\" r=\"0\"/>\n    </svg>\n  );\n}\n\nexport default PulseLoader;\n"
+    }
+  ]
+}

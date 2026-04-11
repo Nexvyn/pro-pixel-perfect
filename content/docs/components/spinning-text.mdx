@@ -49,15 +49,45 @@ import { SpinningText } from "@/components/ui/spinning-text"
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `string \| string[]` | Required | Text to display in circular layout |
-| `duration` | `number` | `10` | Duration of one full rotation in seconds |
-| `reverse` | `boolean` | `false` | Rotate counter-clockwise |
-| `radius` | `number` | `5` | Radius of the text circle (in ch units) |
-| `transition` | `Transition` | - | Framer Motion transition config |
-| `variants` | `object` | - | Custom animation variants |
-| `className` | `string` | - | Additional CSS classes |
+<TypeTable
+  type={{
+    children: {
+      description: "Text to display in circular layout",
+      type: "string | string[]",
+      default: "required",
+    },
+    duration: {
+      description: "Duration of one full rotation in seconds",
+      type: "number",
+      default: "10",
+    },
+    reverse: {
+      description: "Rotate counter-clockwise",
+      type: "boolean",
+      default: "false",
+    },
+    radius: {
+      description: "Radius of the text circle (in ch units)",
+      type: "number",
+      default: "5",
+    },
+    transition: {
+      description: "Framer Motion transition config",
+      type: "Transition",
+      default: "undefined",
+    },
+    variants: {
+      description: "Custom animation variants",
+      type: "object",
+      default: "undefined",
+    },
+    className: {
+      description: "Additional CSS classes",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
 
 ## Features
 
@@ -71,17 +101,13 @@ import { SpinningText } from "@/components/ui/spinning-text"
 ### Slower Rotation
 
 ```tsx
-<SpinningText duration={15}>
-  view • more • info •
-</SpinningText>
+<SpinningText duration={15}>view • more • info •</SpinningText>
 ```
 
 ### Reverse Direction
 
 ```tsx
-<SpinningText reverse>
-  loading • please • wait •
-</SpinningText>
+<SpinningText reverse>loading • please • wait •</SpinningText>
 ```
 
 ### Larger Radius

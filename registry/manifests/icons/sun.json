@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema.json",
+  "name": "sun",
+  "type": "registry:ui",
+  "description": "sun component",
+  "dependencies": [],
+  "devDependencies": ["@types/react"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/icons/animated/sun.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

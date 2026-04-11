@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "180-ring-with-bg",
+  "type": "registry:ui",
+  "description": "180 ring with bg animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/180-ring-with-bg.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

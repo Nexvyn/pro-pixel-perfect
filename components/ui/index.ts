@@ -1,31 +1,15 @@
-// Core UI Components
-export * from "./core/accordion";
-export * from "./core/alert";
-export * from "./core/badge";
-export * from "./core/boxy-border";
-export * from "./core/breadcrumb";
-export * from "./core/button";
-export * from "./core/card";
-export * from "./core/collapsible";
-export * from "./core/command";
-export * from "./core/dialog";
-export * from "./core/dropdown-menu";
-export * from "./core/field";
-export * from "./core/infinite-slider";
-export * from "./core/input";
-export * from "./core/input-group";
-export * from "./core/kbd";
-export * from "./core/morphing-text";
-export * from "./core/popover";
-export * from "./core/progressive-blur";
-export { ProgressiveBlur as ProgressiveBlurManual, type ProgressiveBlurProps as ProgressiveBlurManualProps } from "./core/progressive-blur-manual";
-export * from "./core/scroll-area";
-export * from "./core/search";
-export * from "./core/separator";
-export * from "./core/sidebar";
-export * from "./core/spinning-text";
-export * from "./core/sponsors-page-content";
-export * from "./core/tabs";
-export * from "./core/textarea";
-export * from "./core/tooltip";
+// Public UI entrypoint.
+// Exports only the 8 core distributable components.
+// Site-only UI lives in internal/ and is NOT exported here.
 
+// Primitives
+export * from "./primitives/button"
+export * from "./primitives/card"
+export * from "./primitives/input"
+export * from "./primitives/morphing-text"
+export * from "./primitives/spinning-text"
+
+// Compositions
+export * from "./compositions/cards"
+export * from "./compositions/mouse-follower"
+export * from "./compositions/parallax"

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "ring-resize",
+  "type": "registry:ui",
+  "description": "ring resize animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/ring-resize.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface RingResizeLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Ring Resize Loader\n * CSS-animated SVG loader icon\n */\nexport function RingResizeLoader({\n  size = 24,\n  className,\n  ...props\n}: RingResizeLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Ring Resize loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_V8m1{transform-origin:center;animation:spinner_zKoa 2s linear infinite}.spinner_V8m1 circle{stroke-linecap:round;animation:spinner_YpZS 1.5s ease-in-out infinite}@keyframes spinner_zKoa{100%{transform:rotate(360deg)}}@keyframes spinner_YpZS{0%{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%{stroke-dasharray:42 150;stroke-dashoffset:-16}95%,100%{stroke-dasharray:42 150;stroke-dashoffset:-59}}`}} /><g className=\"spinner_V8m1\"><circle cx=\"12\" cy=\"12\" r=\"9.5\" fill=\"none\" strokeWidth=\"3\"></circle></g>\n    </svg>\n  );\n}\n\nexport default RingResizeLoader;\n"
+    }
+  ]
+}

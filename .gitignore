@@ -32,10 +32,14 @@ sponsors-page-content
 .vscode
 
 # icons (not ready for release)
-/app/(app)/iconsss
+/app/(app)/icons-legacy
 /app/(app)/geist-icons
 /scripts
 
 # project files
 .cursorrules
-project_struc.md
+/unused/
+.windsurf
+tsconfig.json
+__tests__
+

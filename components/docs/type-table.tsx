@@ -6,7 +6,7 @@ import Link from "fumadocs-core/link"
 import { Info as InfoIcon, Link as LinkIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/core/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/internal/popover"
 
 export function Info({ children }: { children: ReactNode }): ReactNode {
   return (

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "3-dots-scale",
+  "type": "registry:ui",
+  "description": "3 dots scale animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/3-dots-scale.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface Loader3DotsScaleProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * 3 Dots Scale Loader\n * CSS-animated SVG loader icon\n */\nexport function Loader3DotsScale({\n  size = 24,\n  className,\n  ...props\n}: Loader3DotsScaleProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"3 Dots Scale loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_b2T7{animation:spinner_xe7Q .8s linear infinite}.spinner_YRVV{animation-delay:-.65s}.spinner_c9oY{animation-delay:-.5s}@keyframes spinner_xe7Q{93.75%,100%{r:3px}46.875%{r:.2px}}`}} /><circle className=\"spinner_b2T7\" cx=\"4\" cy=\"12\" r=\"3\"/><circle className=\"spinner_b2T7 spinner_YRVV\" cx=\"12\" cy=\"12\" r=\"3\"/><circle className=\"spinner_b2T7 spinner_c9oY\" cx=\"20\" cy=\"12\" r=\"3\"/>\n    </svg>\n  );\n}\n\nexport default Loader3DotsScale;\n"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "ring-resize",
+  "type": "registry:ui",
+  "description": "ring resize animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/ring-resize.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

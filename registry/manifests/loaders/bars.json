@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "bars",
+  "type": "registry:ui",
+  "description": "bars animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/bars.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

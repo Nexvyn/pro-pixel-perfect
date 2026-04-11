@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "gooey-balls-1",
+  "type": "registry:ui",
+  "description": "gooey balls 1 animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/gooey-balls-1.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

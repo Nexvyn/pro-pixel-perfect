@@ -11,13 +11,20 @@ File Structure Overview:
 - app/: Next.js App Router directory
   - (app)/: Main application routes (landing pages)
   - docs/: Documentation routes
-  - config/: Configuration files
+  - og/docs/: OpenGraph image generation
+  - llms-full.txt/: LLM context endpoint
 - components/: React components
-  - ui/: Primitive components (atomic building blocks)
-  - patterns/: Complex visual patterns and compositions
-  - icons/: Iconography (animated and static)
-  - internal/: Internal components for the documentation site
+  - ui/primitives/: Atomic distributable components (Button, Card, Input)
+  - ui/compositions/: Complex UI compositions (MouseFollower, Parallax, CardStackAnimate)
+  - ui/internal/: Site-only internal components
+  - icons/animated/: Animated icon library with 31+ icons
+  - features/: Site-specific feature components
+    - home/: Landing page sections
+    - docs/: Documentation UI components
+- config/: Site configuration (docs.ts, sidebar.ts)
 - lib/: Utilities and helper functions
+- content/docs/: MDX documentation files
+- registry/: Component registry manifests for shadcn CLI
 
 ---
 `

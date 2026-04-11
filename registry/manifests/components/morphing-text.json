@@ -1,0 +1,16 @@
+{
+  "name": "morphing-text",
+  "type": "registry:ui",
+  "description": "A gooey SVG filter-based text morphing component",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "components/ui/primitives/morphing-text.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

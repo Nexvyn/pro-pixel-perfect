@@ -1,0 +1,21 @@
+{
+  "$schema": "../schema.json",
+  "name": "action-icons",
+  "type": "registry:ui",
+  "description": "action-icons component",
+  "dependencies": [],
+  "devDependencies": ["@types/react"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/icons/animated/action-icons.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\nimport { motion, useAnimation } from \"motion/react\"\r\nimport type { Variants } from \"motion/react\"\r\n\r\n// V0 Icon animation variants\r\nconst V0_VARIANTS: Variants = {\r\n  normal: { scale: 1 },\r\n  animate: {\r\n    scale: [1, 1.15, 1],\r\n    transition: {\r\n      duration: 0.6,\r\n      repeat: Infinity,\r\n      ease: \"easeInOut\",\r\n    },\r\n  },\r\n}\r\n\r\n// Animated V0 Icon component\r\nexport function V0Icon({ className }: { className?: string }) {\r\n  const controls = useAnimation()\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"flex items-center justify-center\", className)}\r\n      onMouseEnter={() => controls.start(\"animate\")}\r\n      onMouseLeave={() => controls.start(\"normal\")}\r\n    >\r\n      <motion.svg\r\n        aria-label=\"v0 logomark\"\r\n        viewBox=\"0 0 147 70\"\r\n        fill=\"none\"\r\n        xmlns=\"http://www.w3.org/2000/svg\"\r\n        className=\"h-full w-full\"\r\n        variants={V0_VARIANTS}\r\n        animate={controls}\r\n        initial=\"normal\"\r\n      >\r\n        <path\r\n          d=\"M56 50.2031V14H70V60.1562C70 65.5928 65.5928 70 60.1562 70C57.5605 70 54.9982 68.9992 53.1562 67.1573L0 14H19.7969L56 50.2031Z\"\r\n          fill=\"currentColor\"\r\n        />\r\n        <path\r\n          d=\"M147 56H133V23.9531L100.953 56H133V70H96.6875C85.8144 70 77 61.1856 77 50.3125V14H91V46.1562L123.156 14H91V0H127.312C138.186 0 147 8.81439 147 19.6875V56Z\"\r\n          fill=\"currentColor\"\r\n        />\r\n      </motion.svg>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport { TerminalIcon } from \"./terminal-icon\"\r\n"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\n/**\n * Merges class names with tailwind-merge and clsx\n */\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\n/**\n * Merges multiple refs into a single ref callback\n */\nexport function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> | null {\n  if (refs.every((ref) => ref === null || ref === undefined)) {\n    return null\n  }\n\n  return (value) => {\n    refs.forEach((ref) => {\n      if (typeof ref === \"function\") {\n        ref(value)\n      } else if (ref != null) {\n        ;(ref as React.MutableRefObject<T | null>).current = value\n      }\n    })\n  }\n}\n\n/**\n * Returns the absolute URL for a given path\n */\nexport function absoluteUrl(path: string): string {\n  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || \"http://localhost:3000\"\n  return `${baseUrl}${path.startsWith(\"/\") ? path : `/${path}`}`\n}\n"
+    }
+  ]
+}

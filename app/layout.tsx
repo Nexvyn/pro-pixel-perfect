@@ -1,20 +1,16 @@
 import { RootProvider } from "fumadocs-ui/provider"
 import "./global.css"
-import { Inter_Tight, Pixelify_Sans, Meow_Script } from "next/font/google"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Pixelify_Sans } from "next/font/google"
 import { ThemeProvider } from "./providers/theme-provider"
+import { LenisProvider } from "./providers/lenis-provider"
 import { SearchRegistryProvider } from "@/hooks/use-search-registry"
 import { ConfigProvider } from "@/hooks/use-config"
 import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
-import { GlobalSponsorButton } from "@/components/ui/our/common/global-sponsor-button"
-import { CommandPaletteProvider } from "@/components/ui/our/common/command-palette-context"
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  display: "swap",
-})
+import { GlobalSponsorButton } from "@/components/features/sponsors/global-sponsor-button"
+import { CommandPaletteProvider } from "@/components/features/search/command-palette-context"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ui.nexvyn.dev"),
@@ -65,11 +61,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Layout({ children }: LayoutProps<"/">) {
+const pixelifySans = Pixelify_Sans({
+  subsets: ["latin"],
+  variable: "--font-pixelify-sans",
+  display: "swap",
+})
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${pixelifySans.variable}`}
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col font-sans">
@@ -82,7 +84,9 @@ export default function Layout({ children }: LayoutProps<"/">) {
           <SearchRegistryProvider>
             <ConfigProvider>
               <CommandPaletteProvider>
-                <RootProvider search={{ enabled: false }}>{children}</RootProvider>
+                <LenisProvider>
+                  <RootProvider search={{ enabled: false }}>{children}</RootProvider>
+                </LenisProvider>
               </CommandPaletteProvider>
             </ConfigProvider>
           </SearchRegistryProvider>

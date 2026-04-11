@@ -104,3 +104,52 @@ Update the size classes on the card div:
 ```tsx
 className={`card absolute h-[500px] w-[400px] rounded-3xl shadow-lg ...`}
 ```
+
+## Props
+
+<TypeTable
+  type={{
+    items: {
+      description: "Array of card items to display",
+      type: "CardItem[]",
+      default: "defaultItems",
+    },
+    title: {
+      description: "Title text displayed in the center",
+      type: "string",
+      default: '"Card Collection"',
+    },
+    className: {
+      description: "Additional CSS classes for container",
+      type: "string",
+      default: "undefined",
+    },
+    cardClassName: {
+      description: "Additional CSS classes for cards",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
+
+### CardItem
+
+<TypeTable
+  type={{
+    name: {
+      description: "Card name/display text",
+      type: "string",
+      default: "required",
+    },
+    className: {
+      description: "Tailwind classes for card background color",
+      type: "string",
+      default: "required",
+    },
+    link: {
+      description: "URL to card image",
+      type: "string",
+      default: "required",
+    },
+  }}
+/>

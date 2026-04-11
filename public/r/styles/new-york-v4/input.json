@@ -1,17 +1,39 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "type": "registry:ui",
-  "title": "Input",
-  "description": "Input component",
+  "description": "A styled input component with proper focus and disabled states",
   "dependencies": [],
+  "devDependencies": ["@types/react"],
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/new-york-v4/ui/input.tsx",
+      "path": "components/ui/primitives/input.tsx",
       "type": "registry:ui",
-      "target": "components/ui/input.tsx",
       "content": "import * as React from \"react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\r\n  return (\r\n    <input\r\n      type={type}\r\n      data-slot=\"input\"\r\n      className={cn(\r\n        \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\r\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\r\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Input }\r\n"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\n/**\n * Merges class names with tailwind-merge and clsx\n */\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\n/**\n * Merges multiple refs into a single ref callback\n */\nexport function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> | null {\n  if (refs.every((ref) => ref === null || ref === undefined)) {\n    return null\n  }\n\n  return (value) => {\n    refs.forEach((ref) => {\n      if (typeof ref === \"function\") {\n        ref(value)\n      } else if (ref != null) {\n        ;(ref as React.MutableRefObject<T | null>).current = value\n      }\n    })\n  }\n}\n\n/**\n * Returns the absolute URL for a given path\n */\nexport function absoluteUrl(path: string): string {\n  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || \"http://localhost:3000\"\n  return `${baseUrl}${path.startsWith(\"/\") ? path : `/${path}`}`\n}\n"
     }
-  ]
+  ],
+  "tailwind": {
+    "config": {
+      "plugins": []
+    }
+  },
+  "cssVars": {
+    "light": {
+      "input": "0 0% 89.8%",
+      "ring": "0 0% 3.9%",
+      "background": "0 0% 100%",
+      "foreground": "0 0% 3.9%"
+    },
+    "dark": {
+      "input": "0 0% 14.9%",
+      "ring": "0 0% 83.1%",
+      "background": "0 0% 3.9%",
+      "foreground": "0 0% 98%"
+    }
+  }
 }

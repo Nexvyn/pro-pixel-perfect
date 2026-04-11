@@ -1,0 +1,21 @@
+{
+  "$schema": "../schema.json",
+  "name": "light-dark-mode",
+  "type": "registry:ui",
+  "description": "light-dark-mode component",
+  "dependencies": [],
+  "devDependencies": ["@types/react"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/icons/animated/light-dark-mode.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\"\r\n\r\nimport { useTheme } from \"next-themes\"\r\nimport { Button } from \"@/components/ui/primitives/button\"\r\nimport { SunIcon } from \"./sun\"\r\nimport { MoonIcon } from \"./moon\"\r\n\r\nexport function LightDarkMode() {\r\n  const { theme, setTheme } = useTheme()\r\n\r\n  const toggleTheme = () => {\r\n    setTheme(theme === \"dark\" ? \"light\" : \"dark\")\r\n  }\r\n\r\n  return (\r\n    <Button\r\n      variant=\"ghost\"\r\n      size=\"icon\"\r\n      className=\"btn-3d\"\r\n      onClick={toggleTheme}\r\n      aria-label=\"Toggle theme\"\r\n    >\r\n      <SunIcon\r\n        size={20}\r\n        className=\"scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90\"\r\n      />\r\n      <MoonIcon\r\n        size={20}\r\n        className=\"absolute scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0\"\r\n      />\r\n    </Button>\r\n  )\r\n}\r\n\r\n"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\n/**\n * Merges class names with tailwind-merge and clsx\n */\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\n/**\n * Merges multiple refs into a single ref callback\n */\nexport function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> | null {\n  if (refs.every((ref) => ref === null || ref === undefined)) {\n    return null\n  }\n\n  return (value) => {\n    refs.forEach((ref) => {\n      if (typeof ref === \"function\") {\n        ref(value)\n      } else if (ref != null) {\n        ;(ref as React.MutableRefObject<T | null>).current = value\n      }\n    })\n  }\n}\n\n/**\n * Returns the absolute URL for a given path\n */\nexport function absoluteUrl(path: string): string {\n  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || \"http://localhost:3000\"\n  return `${baseUrl}${path.startsWith(\"/\") ? path : `/${path}`}`\n}\n"
+    }
+  ]
+}

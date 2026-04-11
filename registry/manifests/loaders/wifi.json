@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "wifi",
+  "type": "registry:ui",
+  "description": "wifi animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/wifi.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

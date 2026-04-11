@@ -1,12 +1,9 @@
-echo "Running ESLint before push..."
-npm run lint
+echo "Running Nexvyn UI Quality Checks..."
+npm run check:all
 
 if [ $? -ne 0 ]; then
-  echo "ESLint found errors. Push aborted."
+  echo "Quality checks failed. Push aborted. Please fix errors before pushing."
   exit 1
 fi
 
-echo "ESLint passed. Proceeding with push."
-
-npm run build
-
+echo "All checks passed. Proceeding with push."

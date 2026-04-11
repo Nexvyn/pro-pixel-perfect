@@ -1,0 +1,134 @@
+.noise-over {
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.noise-over::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.dark .noise-over::before {
+  opacity: 0.25;
+}
+
+.btn-3d {
+  transition:
+    transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+    background-color 0.2s,
+    box-shadow 0.2s;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-3d:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-3d:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+    inset 0 2px 2px rgba(0, 0, 0, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.dark .btn-3d {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 2px 3px rgba(255, 255, 255, 0.06),
+    inset 0 -4px 1px rgba(0, 0, 0, 0.4);
+}
+
+.dark .btn-3d:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    inset 0 -4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.dark .btn-3d:active {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.btn-3d-primary {
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.05),
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-3d-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1),
+    0 6px 8px -1px rgba(0, 0, 0, 0.35),
+    0 3px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-primary:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.dark .btn-3d-primary {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 2px 3px rgba(255, 255, 255, 0.06),
+    inset 0 -4px 1px rgba(0, 0, 0, 0.4);
+}
+
+.dark .btn-3d-primary:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    inset 0 -4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.dark .btn-3d-primary:active {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+[data-toc],
+.fd-toc,
+aside[data-toc],
+nav[aria-label="table of contents"] {
+  display: none !important;
+}

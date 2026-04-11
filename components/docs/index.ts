@@ -1,10 +1,8 @@
 // Interactive Documentation Components
 // Export all Sonner-style interactive components for documentation pages
 
-export { CodeBlock } from "./CodeBlock"
-export { Installation } from "./Installation"
-export { ButtonGroup } from "./ButtonGroup"
-export { InteractiveDemo } from "./InteractiveDemo"
+export { MDXCodeBlock } from "./mdx-code-block"
+export { Installation } from "./installation"
+export { ButtonGroup } from "./button-group"
+export { InteractiveDemo } from "./interactive-demo"
 export { ComponentPreview } from "./component-preview"
-export { ComponentPreviewEnhanced } from "./ComponentPreviewEnhanced"
-

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "puff",
+  "type": "registry:ui",
+  "description": "puff animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/puff.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface PuffLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Puff Loader\n * CSS-animated SVG loader icon\n */\nexport function PuffLoader({\n  size = 24,\n  className,\n  ...props\n}: PuffLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Puff loading indicator\"\n      {...props}\n    >\n      <g fill=\"none\" fillRule=\"evenodd\" strokeWidth=\"2\">\r\n        <circle cx=\"22\" cy=\"22\" r=\"1\">\r\n            <animate attributeName=\"r\"\r\n                begin=\"0s\" dur=\"1.8s\"\r\n                values=\"1; 20\"\r\n                calcMode=\"spline\"\r\n                keyTimes=\"0; 1\"\r\n                keySplines=\"0.165, 0.84, 0.44, 1\"\r\n                repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-opacity\"\r\n                begin=\"0s\" dur=\"1.8s\"\r\n                values=\"1; 0\"\r\n                calcMode=\"spline\"\r\n                keyTimes=\"0; 1\"\r\n                keySplines=\"0.3, 0.61, 0.355, 1\"\r\n                repeatCount=\"indefinite\" />\r\n        </circle>\r\n        <circle cx=\"22\" cy=\"22\" r=\"1\">\r\n            <animate attributeName=\"r\"\r\n                begin=\"-0.9s\" dur=\"1.8s\"\r\n                values=\"1; 20\"\r\n                calcMode=\"spline\"\r\n                keyTimes=\"0; 1\"\r\n                keySplines=\"0.165, 0.84, 0.44, 1\"\r\n                repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-opacity\"\r\n                begin=\"-0.9s\" dur=\"1.8s\"\r\n                values=\"1; 0\"\r\n                calcMode=\"spline\"\r\n                keyTimes=\"0; 1\"\r\n                keySplines=\"0.3, 0.61, 0.355, 1\"\r\n                repeatCount=\"indefinite\" />\r\n        </circle>\r\n    </g>\n    </svg>\n  );\n}\n\nexport default PuffLoader;\n"
+    }
+  ]
+}

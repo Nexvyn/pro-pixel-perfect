@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "pulse-multiple",
+  "type": "registry:ui",
+  "description": "pulse multiple animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/pulse-multiple.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface PulseMultipleLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Pulse Multiple Loader\n * CSS-animated SVG loader icon\n */\nexport function PulseMultipleLoader({\n  size = 24,\n  className,\n  ...props\n}: PulseMultipleLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Pulse Multiple loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_98HH{animation:spinner_mnRT 1.6s cubic-bezier(0.52,.6,.25,.99) infinite}.spinner_roCJ{animation-delay:.2s}.spinner_q4Oo{animation-delay:.4s}@keyframes spinner_mnRT{0%{r:0;opacity:1}75%,100%{r:11px;opacity:0}}`}} /><circle className=\"spinner_98HH\" cx=\"12\" cy=\"12\" r=\"0\"/><circle className=\"spinner_98HH spinner_roCJ\" cx=\"12\" cy=\"12\" r=\"0\"/><circle className=\"spinner_98HH spinner_q4Oo\" cx=\"12\" cy=\"12\" r=\"0\"/>\n    </svg>\n  );\n}\n\nexport default PulseMultipleLoader;\n"
+    }
+  ]
+}

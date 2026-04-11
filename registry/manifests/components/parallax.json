@@ -1,0 +1,16 @@
+{
+  "name": "parallax",
+  "type": "registry:ui",
+  "description": "A GSAP-powered parallax scroll effect component",
+  "dependencies": ["gsap", "@gsap/react"],
+  "files": [
+    {
+      "path": "components/ui/compositions/parallax.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

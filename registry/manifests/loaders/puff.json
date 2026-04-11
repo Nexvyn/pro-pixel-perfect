@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "puff",
+  "type": "registry:ui",
+  "description": "puff animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/puff.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

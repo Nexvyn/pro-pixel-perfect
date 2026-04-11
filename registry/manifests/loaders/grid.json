@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "grid",
+  "type": "registry:ui",
+  "description": "grid animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/grid.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

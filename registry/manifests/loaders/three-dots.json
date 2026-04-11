@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "three-dots",
+  "type": "registry:ui",
+  "description": "three dots animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/three-dots.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

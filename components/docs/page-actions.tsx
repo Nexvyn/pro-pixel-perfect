@@ -1,23 +1,13 @@
-"use client";
-import { useMemo, useState } from "react";
-import {
-  Check,
-  ChevronDown,
-  Copy,
-  ExternalLinkIcon,
-  MessageCircleIcon,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useCopyButton } from "fumadocs-ui/utils/use-copy-button";
-import { buttonVariants } from "@/components/ui/core/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/core/popover";
-import { cva } from "class-variance-authority";
+"use client"
+import { useMemo, useState } from "react"
+import { Check, ChevronDown, Copy, ExternalLinkIcon, MessageCircleIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { useCopyButton } from "fumadocs-ui/utils/use-copy-button"
+import { buttonVariants } from "@/components/ui/primitives/button"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/internal/popover"
+import { cva } from "class-variance-authority"
 
-const cache = new Map<string, string>();
+const cache = new Map<string, string>()
 
 export function LLMCopyButton({
   /**
@@ -25,30 +15,30 @@ export function LLMCopyButton({
    */
   markdownUrl,
 }: {
-  markdownUrl: string;
+  markdownUrl: string
 }) {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false)
   const [checked, onClick] = useCopyButton(async () => {
-    const cached = cache.get(markdownUrl);
-    if (cached) return navigator.clipboard.writeText(cached);
+    const cached = cache.get(markdownUrl)
+    if (cached) return navigator.clipboard.writeText(cached)
 
-    setLoading(true);
+    setLoading(true)
 
     try {
       await navigator.clipboard.write([
         new ClipboardItem({
           "text/plain": fetch(markdownUrl).then(async (res) => {
-            const content = await res.text();
-            cache.set(markdownUrl, content);
+            const content = await res.text()
+            cache.set(markdownUrl, content)
 
-            return content;
+            return content
           }),
         }),
-      ]);
+      ])
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  });
+  })
 
   return (
     <button
@@ -57,7 +47,7 @@ export function LLMCopyButton({
         buttonVariants({
           variant: "secondary",
           size: "sm",
-          className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground",
+          className: "[&_svg]:text-fd-muted-foreground gap-2 [&_svg]:size-3.5",
         })
       )}
       onClick={onClick}
@@ -65,12 +55,12 @@ export function LLMCopyButton({
       {checked ? <Check /> : <Copy />}
       Copy Markdown
     </button>
-  );
+  )
 }
 
 const optionVariants = cva(
   "text-sm p-2 rounded-lg inline-flex items-center gap-2 hover:text-fd-accent-foreground hover:bg-fd-accent [&_svg]:size-4"
-);
+)
 
 export function ViewOptions({
   markdownUrl,
@@ -79,19 +69,17 @@ export function ViewOptions({
   /**
    * A URL to the raw Markdown/MDX content of page
    */
-  markdownUrl: string;
+  markdownUrl: string
 
   /**
    * Source file URL on GitHub
    */
-  githubUrl: string;
+  githubUrl: string
 }) {
   const items = useMemo(() => {
     const fullMarkdownUrl =
-      typeof window !== "undefined"
-        ? new URL(markdownUrl, window.location.origin)
-        : "loading";
-    const q = `Read ${fullMarkdownUrl}, I want to ask questions about it.`;
+      typeof window !== "undefined" ? new URL(markdownUrl, window.location.origin) : "loading"
+    const q = `Read ${fullMarkdownUrl}, I want to ask questions about it.`
 
     return [
       {
@@ -210,8 +198,8 @@ export function ViewOptions({
         })}`,
         icon: <MessageCircleIcon />,
       },
-    ];
-  }, [githubUrl, markdownUrl]);
+    ]
+  }, [githubUrl, markdownUrl])
 
   return (
     <Popover>
@@ -225,7 +213,7 @@ export function ViewOptions({
         )}
       >
         Open
-        <ChevronDown className="size-3.5 text-fd-muted-foreground" />
+        <ChevronDown className="text-fd-muted-foreground size-3.5" />
       </PopoverTrigger>
       <PopoverContent className="flex flex-col">
         {items.map((item) => (
@@ -238,10 +226,10 @@ export function ViewOptions({
           >
             {item.icon}
             {item.title}
-            <ExternalLinkIcon className="text-fd-muted-foreground size-3.5 ms-auto" />
+            <ExternalLinkIcon className="text-fd-muted-foreground ms-auto size-3.5" />
           </a>
         ))}
       </PopoverContent>
     </Popover>
-  );
+  )
 }

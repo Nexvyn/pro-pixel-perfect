@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react"
 
 import { useDataFast } from "@/lib/datafast-client"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/core/button"
+import { Button } from "@/components/ui/primitives/button"
 
 export function DocsCta({ className }: React.ComponentProps<"div">) {
   const { track } = useDataFast()
@@ -24,7 +24,7 @@ export function DocsCta({ className }: React.ComponentProps<"div">) {
         Ship Beautiful React apps that convert!
       </div>
       <div className="text-muted-foreground">
-        Get BadtzUI Pro and access prebuilt templates & blocks for ReactJS.
+        Get Nexvyn UI Pro and access prebuilt templates & blocks for ReactJS.
       </div>
       <div className="text-muted-foreground">
         Build faster while converting more users to customers.
@@ -34,17 +34,17 @@ export function DocsCta({ className }: React.ComponentProps<"div">) {
         variant="default"
         className="mt-2 flex w-full items-center justify-between rounded !text-[13.5px] text-white"
       >
-        BadtzUI Pro
+        Nexvyn UI Pro
         <ExternalLink />
       </Button>
       <a
-        href="https://pro.badtz-ui.com"
+        href="https://pro.nexvyn.dev"
         target="_blank"
         rel="noreferrer"
         className="absolute inset-0"
         onClick={handleComponentsClick}
       >
-        <span className="sr-only">Badtz UI</span>
+        <span className="sr-only">Nexvyn UI</span>
       </a>
     </div>
   )

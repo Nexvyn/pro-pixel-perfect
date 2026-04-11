@@ -1,7 +1,7 @@
 "use client"
 
 import { ReactNode } from "react"
-import { ScrollIndicator } from "@/components/ui/our/common/scroll-indicator"
+import { ScrollIndicator } from "@/components/ui/internal/scroll-indicator"
 
 interface TOCItem {
   title: ReactNode

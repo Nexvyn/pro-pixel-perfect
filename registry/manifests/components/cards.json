@@ -1,0 +1,16 @@
+{
+  "name": "cards",
+  "type": "registry:ui",
+  "description": "A GSAP-powered scrolling card stack animation component",
+  "dependencies": ["gsap", "@gsap/react"],
+  "files": [
+    {
+      "path": "components/ui/compositions/cards.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

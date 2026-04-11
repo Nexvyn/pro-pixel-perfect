@@ -1,12 +1,11 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { ScrollArea } from "@/components/ui/core/scroll-area"
-import { ScrollMaskContainer } from "@/components/ui/our/common/scroll-mask-container"
-import { DocsSidebarNav, type SidebarNavItem } from "@/components/docs/sidebar-nav"
+import { ScrollArea } from "@/components/ui/internal/scroll-area"
+import { ScrollMaskContainer } from "@/components/ui/internal/scroll-mask-container"
+import { DocsSidebarNav, type SidebarNavItem } from "@/components/ui/internal/sidebar-nav"
 import { cn } from "@/lib/utils"
 import { Menu, SidebarClose, SidebarOpen, X } from "lucide-react"
-import { Button } from "@/components/ui/core/button"
 import { motion, AnimatePresence } from "motion/react"
 import { useOs } from "@/hooks/use-os"
 
@@ -137,12 +136,6 @@ export function CollapsibleSidebar({ items, open, onToggle }: CollapsibleSidebar
             >
               Components
             </a>
-            <a
-              href="/sponsors"
-              className="text-foreground hover:text-primary block py-2 text-sm font-medium transition-colors"
-            >
-              Sponsors
-            </a>
           </div>
 
           {/* Docs Navigation */}
@@ -155,14 +148,15 @@ export function CollapsibleSidebar({ items, open, onToggle }: CollapsibleSidebar
         initial={false}
         animate={{ width: isSidebarOpen ? 260 : 48 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="relative hidden h-full lg:flex flex-col border-r border-border overflow-hidden"
+        className="border-border relative hidden h-full flex-col overflow-hidden border-r lg:flex"
       >
         {/* Toggle Button - Absolute Positioned */}
         <motion.button
+          type="button"
           layout
           onClick={toggleSidebar}
           className={cn(
-            "absolute z-20 flex items-center justify-center cursor-pointer rounded-md hover:bg-muted group",
+            "hover:bg-muted group absolute z-20 flex cursor-pointer items-center justify-center rounded-md",
             "size-6"
           )}
           style={{
@@ -171,14 +165,17 @@ export function CollapsibleSidebar({ items, open, onToggle }: CollapsibleSidebar
             left: isSidebarOpen ? "auto" : 12, // Centered in 48px width (12px margin)
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          role="button"
-          tabIndex={0}
-          title={isSidebarOpen ? `Close sidebar (${isMac ? "⌘" : "Ctrl"}+B)` : `Open sidebar (${isMac ? "⌘" : "Ctrl"}+B)`}
+          aria-label={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
+          title={
+            isSidebarOpen
+              ? `Close sidebar (${isMac ? "⌘" : "Ctrl"}+B)`
+              : `Open sidebar (${isMac ? "⌘" : "Ctrl"}+B)`
+          }
         >
           {isSidebarOpen ? (
-            <SidebarClose className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+            <SidebarClose className="text-muted-foreground group-hover:text-foreground size-4 transition-colors" />
           ) : (
-            <SidebarOpen className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+            <SidebarOpen className="text-muted-foreground group-hover:text-foreground size-4 transition-colors" />
           )}
         </motion.button>
 
@@ -186,10 +183,7 @@ export function CollapsibleSidebar({ items, open, onToggle }: CollapsibleSidebar
         <motion.div
           animate={{ opacity: isSidebarOpen ? 1 : 0 }}
           transition={{ duration: 0.2 }}
-          className={cn(
-            "flex-1 overflow-hidden",
-            !isSidebarOpen && "pointer-events-none"
-          )}
+          className={cn("flex-1 overflow-hidden", !isSidebarOpen && "pointer-events-none")}
         >
           <div className="h-full w-[260px]">
             <ScrollMaskContainer className="h-full px-2">

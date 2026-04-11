@@ -1,12 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { LightDarkMode } from "@/components/ui/icons/animated/light-dark-mode"
-import { Button } from "@/components/ui/core/button"
-import { CommandPalette } from "@/components/ui/our/common/command-palette"
-import { GithubIcon } from "@/components/ui/icons/animated/github"
-import { StarsCount } from "@/components/ui/our/home/stars-count"
-import { SequentialLogo } from "@/components/ui/our/home/nexvyn-logo"
+import { LightDarkMode } from "@/components/features/home/icons/light-dark-mode"
+import { Button } from "@/components/ui/primitives/button"
+import { CommandPalette } from "@/components/features/search/command-palette"
+import { GithubIcon } from "@/components/icons/animated/github"
+import { StarsCount } from "@/components/features/home/stars-count"
+import { SequentialLogo } from "@/components/features/home/nexvyn-logo"
 import { cn } from "@/lib/utils"
 
 export function DocsNavbar() {
@@ -20,7 +20,7 @@ export function DocsNavbar() {
         // Fixed dimensions to match main navbar
         "h-10 sm:p-2",
         // Matching landing page style
-        "noise-overlay font-Inter Tight rounded-xl",
+        "noise-over font-Inter Tight rounded-xl",
         "flex items-center justify-between"
       )}
     >
@@ -41,24 +41,26 @@ export function DocsNavbar() {
       <div className="hidden gap-1 sm:gap-2 md:flex">
         <Button
           variant="ghost"
-          className="bg-background/30 border-border/50 hover:bg-background/50 border backdrop-blur-sm transition-shadow hover:shadow-md h-8 px-2 sm:h-9 sm:px-4"
+          className="bg-background/30 border-border/50 hover:bg-background/50 h-8 border px-2 backdrop-blur-sm transition-shadow hover:shadow-md sm:h-9 sm:px-4"
           asChild
         >
           <Link href="/docs">Docs</Link>
         </Button>
         <Button
           variant="ghost"
-          className="bg-background/30 border-border/50 hover:bg-background/50 border backdrop-blur-sm transition-shadow hover:shadow-md h-8 px-2 sm:h-9 sm:px-4"
+          className="bg-background/30 border-border/50 hover:bg-background/50 h-8 border px-2 backdrop-blur-sm transition-shadow hover:shadow-md sm:h-9 sm:px-4"
           asChild
         >
           <Link href="/icons">Icons</Link>
         </Button>
         <Button
           variant="ghost"
-          className="bg-background/30 border-border/50 hover:bg-background/50 border backdrop-blur-sm transition-shadow hover:shadow-md h-8 px-2 sm:h-9 sm:px-4"
+          className="bg-background/30 border-border/50 hover:bg-background/50 h-8 border px-2 backdrop-blur-sm transition-shadow hover:shadow-md sm:h-9 sm:px-4"
           asChild
         >
-          <Link href="/sponsors">Sponsors</Link>
+          <Link href="https://github.com/sponsors/Nexvyn" target="_blank" rel="noreferrer">
+            Sponsor
+          </Link>
         </Button>
       </div>
 

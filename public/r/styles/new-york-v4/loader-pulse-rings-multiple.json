@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "pulse-rings-multiple",
+  "type": "registry:ui",
+  "description": "pulse rings multiple animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/pulse-rings-multiple.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface PulseRingsMultipleLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Pulse Rings Multiple Loader\n * CSS-animated SVG loader icon\n */\nexport function PulseRingsMultipleLoader({\n  size = 24,\n  className,\n  ...props\n}: PulseRingsMultipleLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Pulse Rings Multiple loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_Uvk8{animation:spinner_otJF 1.6s cubic-bezier(.52,.6,.25,.99) infinite}.spinner_ypeD{animation-delay:.2s}.spinner_y0Rj{animation-delay:.4s}@keyframes spinner_otJF{0%{transform:translate(12px,12px) scale(0);opacity:1}75%,100%{transform:translate(0,0) scale(1);opacity:0}}`}} /><path className=\"spinner_Uvk8\" d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z\" transform=\"translate(12, 12) scale(0)\"/><path className=\"spinner_Uvk8 spinner_ypeD\" d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z\" transform=\"translate(12, 12) scale(0)\"/><path className=\"spinner_Uvk8 spinner_y0Rj\" d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z\" transform=\"translate(12, 12) scale(0)\"/>\n    </svg>\n  );\n}\n\nexport default PulseRingsMultipleLoader;\n"
+    }
+  ]
+}

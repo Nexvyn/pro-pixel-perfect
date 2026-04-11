@@ -1,8 +1,11 @@
 import fs from "fs/promises"
 import path from "path"
 
+import registryConfig from "@/config/registry.json"
+
 interface RegistryFile {
   path?: string
+  type?: string
   content?: string
 }
 
@@ -18,98 +21,146 @@ interface RegistryItem {
   cssVars?: Record<string, unknown>
 }
 
-/**
- * Get a registry item by name
- * Loads component data and reads file contents
- * Primary source: registry/components/ (canonical)
- * Fallback: public/r/ (for backwards compatibility)
- */
-export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
+const rootDir = process.cwd()
+const componentSourceDirectories = registryConfig.componentSourceDirectories as string[]
+
+function toOsPath(relativePath: string) {
+  return path.join(rootDir, relativePath)
+}
+
+function withTsExtensions(relativePath: string) {
+  if (path.extname(relativePath)) {
+    return [relativePath]
+  }
+
+  return [`${relativePath}.tsx`, `${relativePath}.ts`]
+}
+
+async function fileExists(relativePath: string) {
   try {
-    // Try to load from canonical registry/components/ first
-    const canonicalRegistryPath = path.join(process.cwd(), "registry", "components", `${name}.json`)
+    await fs.access(toOsPath(relativePath))
+    return true
+  } catch {
+    return false
+  }
+}
 
-    try {
-      const data = await fs.readFile(canonicalRegistryPath, "utf-8")
-      const item = JSON.parse(data) as RegistryItem
+async function readFileIfExists(relativePath: string) {
+  if (!(await fileExists(relativePath))) {
+    return null
+  }
 
-      // Read file contents if files are specified
-      if (item.files) {
-        for (const file of item.files) {
-          if (file.path && !file.content) {
-            try {
-              const filePath = path.join(process.cwd(), file.path)
-              file.content = await fs.readFile(filePath, "utf-8")
-            } catch {
-              // File not found, skip
-            }
-          }
-        }
-      }
+  return fs.readFile(toOsPath(relativePath), "utf-8")
+}
 
-      return item
-    } catch {
-      // Fallback to public registry (for backwards compatibility)
-      const publicRegistryPath = path.join(
-        process.cwd(),
-        "public",
-        "r",
-        "styles",
-        "new-york-v4",
-        `${name}.json`
-      )
+function getCanonicalComponentCandidates(name: string) {
+  return componentSourceDirectories.flatMap((directory) => withTsExtensions(`${directory}/${name}`))
+}
 
-      try {
-        const data = await fs.readFile(publicRegistryPath, "utf-8")
-        const item = JSON.parse(data) as RegistryItem
+function getManifestRepairCandidates(itemName: string, filePath?: string) {
+  const candidates = new Set<string>()
 
-        // Read file contents if files are specified
-        if (item.files) {
-          for (const file of item.files) {
-            if (file.path && !file.content) {
-              try {
-                const filePath = path.join(process.cwd(), file.path)
-                file.content = await fs.readFile(filePath, "utf-8")
-              } catch {
-                // File not found, skip
-              }
-            }
-          }
-        }
+  if (filePath) {
+    candidates.add(filePath.replace(/\\/g, "/"))
 
-        return item
-      } catch {
-        // Try alternate location in registry folder
-        const altRegistryPath = path.join(
-          process.cwd(),
-          "registry",
-          "new-york-v4",
-          "ui",
-          `${name}.tsx`
-        )
+    const basename = path.basename(filePath, path.extname(filePath))
 
-        try {
-          const content = await fs.readFile(altRegistryPath, "utf-8")
-          return {
-            name,
-            type: "registry:ui",
-            files: [{ path: altRegistryPath, content }],
-          }
-        } catch {
-          return null
-        }
+    for (const candidate of getCanonicalComponentCandidates(basename)) {
+      candidates.add(candidate)
+    }
+
+    if (basename !== itemName) {
+      for (const candidate of getCanonicalComponentCandidates(itemName)) {
+        candidates.add(candidate)
       }
     }
-  } catch (error) {
-    console.error(`Failed to get registry item: ${name}`, error)
+  } else {
+    for (const candidate of getCanonicalComponentCandidates(itemName)) {
+      candidates.add(candidate)
+    }
+  }
+
+  return [...candidates]
+}
+
+async function hydrateFiles(itemName: string, files: RegistryFile[] = []) {
+  const hydratedFiles: RegistryFile[] = []
+
+  for (const file of files) {
+    const candidates = getManifestRepairCandidates(itemName, file.path)
+
+    let resolvedPath = file.path
+    let content = file.content
+
+    for (const candidate of candidates) {
+      const candidateContent = await readFileIfExists(candidate)
+
+      if (candidateContent) {
+        resolvedPath = candidate
+        content = candidateContent
+        break
+      }
+    }
+
+    hydratedFiles.push({
+      ...file,
+      path: resolvedPath,
+      content,
+    })
+  }
+
+  return hydratedFiles
+}
+
+async function readRegistryJson(relativePath: string) {
+  try {
+    const data = await fs.readFile(toOsPath(relativePath), "utf-8")
+    return JSON.parse(data) as RegistryItem
+  } catch {
     return null
   }
 }
 
 /**
- * Check if a registry item exists
+ * Get a registry item by name.
+ * Primary source: registry manifests.
+ * Secondary source: published public registry JSON.
+ * Final fallback: canonical component source directories from config.
  */
+export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
+  const manifestPaths = [
+    `${registryConfig.registryComponentsDirectory}/${name}.json`,
+    `${registryConfig.publicRegistryDirectory}/${name}.json`,
+  ]
+
+  for (const manifestPath of manifestPaths) {
+    const manifest = await readRegistryJson(manifestPath)
+
+    if (!manifest) {
+      continue
+    }
+
+    return {
+      ...manifest,
+      files: await hydrateFiles(name, manifest.files),
+    }
+  }
+
+  for (const candidate of getCanonicalComponentCandidates(name)) {
+    const content = await readFileIfExists(candidate)
+
+    if (content) {
+      return {
+        name,
+        type: "registry:ui",
+        files: [{ path: candidate, type: "registry:ui", content }],
+      }
+    }
+  }
+
+  return null
+}
+
 export async function hasRegistryItem(name: string): Promise<boolean> {
-  const item = await getRegistryItem(name)
-  return item !== null
+  return (await getRegistryItem(name)) !== null
 }

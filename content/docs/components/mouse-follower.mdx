@@ -3,6 +3,10 @@ title: Mouse Follower
 description: Interactive mouse follower effect with image trails that respond to cursor movement.
 ---
 
+<Callout type="warn">
+  The default images use placeholder URLs. Replace them with your own images before production use.
+</Callout>
+
 <ComponentPreview
   name="mouse-follower-demo"
   description="Interactive image trail that follows cursor movement"
@@ -87,3 +91,14 @@ Adjust the container dimensions:
 <div className="h-screen w-full" ref={containerRef}></div>
 ```
 
+## Props
+
+<TypeTable
+  type={{
+    images: {
+      description: "Array of image URLs for the trail effect",
+      type: "string[]",
+      default: "placeholder images",
+    },
+  }}
+/>

@@ -1,42 +1,43 @@
 "use client"
 
-import React, { useCallback, useState } from "react"
-import copy from "copy-to-clipboard"
-import { motion, AnimatePresence, MotionConfig } from "framer-motion"
-import { CopyIcon } from "@/components/ui/icons/static/CopyIcon"
-import { CheckIcon } from "@/components/ui/icons/static/CheckIcon"
-import { iconSwapVariants } from "@/lib/animation-variants"
+import React, { useCallback } from "react"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { motion, AnimatePresence, MotionConfig } from "motion/react"
+import { Copy as CopyIcon, Check as CheckIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 import styles from "./installation.module.css"
 
 interface InstallationProps {
   command?: string
 }
 
+const iconSwapVariants = {
+  visible: { opacity: 1, scale: 1 },
+  hidden: { opacity: 0, scale: 0.5 },
+}
+
 export function Installation({ command = "npm install your-package" }: InstallationProps) {
-  const [copying, setCopying] = useState<number>(0)
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   const onCopy = useCallback(() => {
-    copy(command)
-    setCopying((c) => c + 1)
-    setTimeout(() => {
-      setCopying((c) => c - 1)
-    }, 2000)
-  }, [command])
+    copyToClipboard(command)
+  }, [command, copyToClipboard])
 
   return (
-    <code className={styles.code} onClick={onCopy}>
-      {command}
-      <button
-        className={styles.copy}
-        onClick={(e) => {
-          e.stopPropagation()
-          onCopy()
-        }}
-        aria-label="Copy installation command"
-      >
+    <button
+      type="button"
+      className={cn(
+        "group relative flex w-full items-center justify-between rounded-lg bg-transparent text-left font-mono text-sm",
+        styles.code
+      )}
+      onClick={onCopy}
+      aria-label={`Copy installation command: ${command}`}
+    >
+      <code className="flex-1 overflow-x-auto pr-10 whitespace-nowrap">{command}</code>
+      <div className={styles.copy} aria-hidden="true">
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence mode="wait" initial={false}>
-            {copying > 0 ? (
+            {isCopied ? (
               <motion.div
                 key="check"
                 variants={iconSwapVariants}
@@ -44,7 +45,7 @@ export function Installation({ command = "npm install your-package" }: Installat
                 animate="visible"
                 exit="hidden"
               >
-                <CheckIcon />
+                <CheckIcon className="size-4" />
               </motion.div>
             ) : (
               <motion.div
@@ -54,12 +55,15 @@ export function Installation({ command = "npm install your-package" }: Installat
                 animate="visible"
                 exit="hidden"
               >
-                <CopyIcon />
+                <CopyIcon className="size-4" />
               </motion.div>
             )}
           </AnimatePresence>
         </MotionConfig>
-      </button>
-    </code>
+      </div>
+      <span className="sr-only" aria-live="polite">
+        {isCopied ? "Installation command copied to clipboard" : ""}
+      </span>
+    </button>
   )
 }

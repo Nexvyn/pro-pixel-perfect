@@ -1,0 +1,16 @@
+{
+  "name": "spinning-text",
+  "type": "registry:ui",
+  "description": "A Framer Motion-powered circular spinning text component",
+  "dependencies": ["motion/react"],
+  "files": [
+    {
+      "path": "components/ui/primitives/spinning-text.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

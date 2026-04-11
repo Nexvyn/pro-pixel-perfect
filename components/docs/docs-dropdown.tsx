@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronDown, HeartHandshake } from "lucide-react"
 
-import { Button } from "@/components/ui/core/button"
+import { Button } from "@/components/ui/primitives/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +16,12 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/core/dropdown-menu"
+} from "@/components/ui/internal/dropdown-menu"
 
 export function DocsDropdown() {
   const pathname = usePathname()
 
-  const githubBaseUrl = "https://github.com/badtzx0/badtz-ui/blob/main/content"
+  const githubBaseUrl = "https://github.com/Nexvyn/nexvyn-ui/blob/main/content"
   const githubEditUrl = `${githubBaseUrl}${pathname}.mdx`
 
   return (
@@ -48,7 +48,7 @@ export function DocsDropdown() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link
-                    href="https://github.com/badtzx0/badtz-ui"
+                    href="https://github.com/Nexvyn/nexvyn-ui"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -60,7 +60,7 @@ export function DocsDropdown() {
           </DropdownMenuSub>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui/discussions/categories/component-suggestions"
+              href="https://github.com/Nexvyn/nexvyn-ui/discussions/categories/component-suggestions"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,7 +69,7 @@ export function DocsDropdown() {
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui/discussions/categories/bug-reports"
+              href="https://github.com/Nexvyn/nexvyn-ui/discussions/categories/bug-reports"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -78,7 +78,7 @@ export function DocsDropdown() {
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui/discussions/categories/general"
+              href="https://github.com/Nexvyn/nexvyn-ui/discussions/categories/general"
               target="_blank"
               rel="noopener noreferrer"
             >

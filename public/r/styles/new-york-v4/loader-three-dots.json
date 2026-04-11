@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "three-dots",
+  "type": "registry:ui",
+  "description": "three dots animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/three-dots.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface ThreeDotsLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Three Dots Loader\n * CSS-animated SVG loader icon\n */\nexport function ThreeDotsLoader({\n  size = 24,\n  className,\n  ...props\n}: ThreeDotsLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Three Dots loading indicator\"\n      {...props}\n    >\n      <circle cx=\"15\" cy=\"15\" r=\"15\">\r\n        <animate attributeName=\"r\" from=\"15\" to=\"15\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\"15;9;15\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        <animate attributeName=\"fill-opacity\" from=\"1\" to=\"1\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\"1;.5;1\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n    </circle>\r\n    <circle cx=\"60\" cy=\"15\" r=\"9\" fillOpacity=\"0.3\">\r\n        <animate attributeName=\"r\" from=\"9\" to=\"9\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\"9;15;9\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        <animate attributeName=\"fill-opacity\" from=\"0.5\" to=\"0.5\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\".5;1;.5\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n    </circle>\r\n    <circle cx=\"105\" cy=\"15\" r=\"15\">\r\n        <animate attributeName=\"r\" from=\"15\" to=\"15\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\"15;9;15\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        <animate attributeName=\"fill-opacity\" from=\"1\" to=\"1\"\r\n                 begin=\"0s\" dur=\"0.8s\"\r\n                 values=\"1;.5;1\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n    </circle>\n    </svg>\n  );\n}\n\nexport default ThreeDotsLoader;\n"
+    }
+  ]
+}

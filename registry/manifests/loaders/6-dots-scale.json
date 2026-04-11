@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "6-dots-scale",
+  "type": "registry:ui",
+  "description": "6 dots scale animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/6-dots-scale.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

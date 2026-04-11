@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "3-dots-fade",
+  "type": "registry:ui",
+  "description": "3 dots fade animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/3-dots-fade.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "3-dots-move",
+  "type": "registry:ui",
+  "description": "3 dots move animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/3-dots-move.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface Loader3DotsMoveProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * 3 Dots Move Loader\n * CSS-animated SVG loader icon\n */\nexport function Loader3DotsMove({\n  size = 24,\n  className,\n  ...props\n}: Loader3DotsMoveProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"3 Dots Move loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_nOfF{animation:spinner_qtyZ 2s cubic-bezier(0.36,.6,.31,1) infinite}.spinner_fVhf{animation-delay:-.5s}.spinner_piVe{animation-delay:-1s}.spinner_MSNs{animation-delay:-1.5s}@keyframes spinner_qtyZ{0%{r:0}25%{r:3px;cx:4px}50%{r:3px;cx:12px}75%{r:3px;cx:20px}100%{r:0;cx:20px}}`}} /><circle className=\"spinner_nOfF\" cx=\"4\" cy=\"12\" r=\"3\"/><circle className=\"spinner_nOfF spinner_fVhf\" cx=\"4\" cy=\"12\" r=\"3\"/><circle className=\"spinner_nOfF spinner_piVe\" cx=\"4\" cy=\"12\" r=\"3\"/><circle className=\"spinner_nOfF spinner_MSNs\" cx=\"4\" cy=\"12\" r=\"3\"/>\n    </svg>\n  );\n}\n\nexport default Loader3DotsMove;\n"
+    }
+  ]
+}

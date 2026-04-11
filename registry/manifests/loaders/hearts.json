@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "hearts",
+  "type": "registry:ui",
+  "description": "hearts animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/hearts.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

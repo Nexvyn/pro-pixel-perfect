@@ -1,23 +1,22 @@
-﻿"use client"
+"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { TriangleDownIcon } from "@radix-ui/react-icons"
-import { Bookmark } from "lucide-react"
+import { Bookmark, ChevronDown } from "lucide-react"
 
 import { useBookmarks } from "@/hooks/use-bookmarks"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/core/collapsible"
+} from "@/components/ui/internal/collapsible"
 import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/core/sidebar"
+} from "@/components/ui/internal/sidebar"
 
 export function BookmarkCollapsible() {
   const pathname = usePathname()
@@ -37,7 +36,7 @@ export function BookmarkCollapsible() {
           >
             <Bookmark className="!text-muted-foreground mb-[3px] h-3.5 w-3.5" />
             <span className="whitespace-nowrap transition-opacity duration-200">Bookmarks</span>
-            <TriangleDownIcon className="transition-transform group-data-[state=closed]/collapsible:-rotate-[90deg] group-data-[state=open]/collapsible:rotate-[0deg]" />
+            <ChevronDown className="h-3 w-3 transition-transform group-data-[state=closed]/collapsible:-rotate-[90deg] group-data-[state=open]/collapsible:rotate-[0deg]" />
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>

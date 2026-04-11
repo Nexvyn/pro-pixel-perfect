@@ -1,4 +1,4 @@
-﻿---
+---
 title: Input
 description: An input component for forms with various types and states.
 ---
@@ -34,7 +34,7 @@ description: An input component for forms with various types and states.
 ## Usage
 
 ```tsx
-import { Input } from "@/components/ui/core/input"
+import { Input } from "@/components/ui/primitives/input"
 ```
 
 ```tsx
@@ -85,3 +85,29 @@ import { Input } from "@/components/ui/core/input"
 </div>
 ```
 
+## Props
+
+<TypeTable
+  type={{
+    type: {
+      description: "Input type attribute",
+      type: '"text" | "email" | "password" | "number" | "search" | "tel" | "url" | "date" | "datetime-local" | "month" | "time" | "week"',
+      default: '"text"',
+    },
+    placeholder: {
+      description: "Placeholder text",
+      type: "string",
+      default: "undefined",
+    },
+    disabled: {
+      description: "Disable the input",
+      type: "boolean",
+      default: "false",
+    },
+    className: {
+      description: "Additional CSS classes",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>

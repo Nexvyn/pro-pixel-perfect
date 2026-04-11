@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/core/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/internal/alert"
 
 export function Callout({
   title,

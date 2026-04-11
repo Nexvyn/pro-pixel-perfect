@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "spinning-circles",
+  "type": "registry:ui",
+  "description": "spinning circles animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/spinning-circles.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

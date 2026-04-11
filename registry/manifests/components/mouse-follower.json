@@ -1,0 +1,16 @@
+{
+  "name": "mouse-follower",
+  "type": "registry:ui",
+  "description": "An interactive image trail mouse follower component",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "components/ui/compositions/mouse-follower.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

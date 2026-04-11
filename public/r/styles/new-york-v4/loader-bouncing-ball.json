@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "bouncing-ball",
+  "type": "registry:ui",
+  "description": "bouncing ball animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/bouncing-ball.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface BouncingBallLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Bouncing Ball Loader\n * CSS-animated SVG loader icon\n */\nexport function BouncingBallLoader({\n  size = 24,\n  className,\n  ...props\n}: BouncingBallLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Bouncing Ball loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_rXNP{animation:spinner_YeBj .8s infinite}@keyframes spinner_YeBj{0%{animation-timing-function:cubic-bezier(0.33,0,.66,.33);cy:5px}46.875%{cy:20px;rx:4px;ry:4px}50%{animation-timing-function:cubic-bezier(0.33,.66,.66,1);cy:20.5px;rx:4.8px;ry:3px}53.125%{rx:4px;ry:4px}100%{cy:5px}}`}} /><ellipse className=\"spinner_rXNP\" cx=\"12\" cy=\"5\" rx=\"4\" ry=\"4\"/>\n    </svg>\n  );\n}\n\nexport default BouncingBallLoader;\n"
+    }
+  ]
+}

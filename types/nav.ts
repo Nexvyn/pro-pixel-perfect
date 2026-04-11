@@ -4,6 +4,7 @@ export interface SidebarNavItem {
   disabled?: boolean
   external?: boolean
   label?: string
+  iconName?: string
   items?: SidebarNavItem[]
 }
 

@@ -5,8 +5,8 @@ import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 
 import { useConfig } from "@/hooks/use-config"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/core/tabs"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/core/tooltip"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/internal/tabs"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/internal/tooltip"
 
 // Package Manager Icons
 const NpmIcon = () => (

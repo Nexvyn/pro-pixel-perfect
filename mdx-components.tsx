@@ -5,12 +5,14 @@ import Image from "next/image"
 import { Tabs, Tab } from "fumadocs-ui/components/tabs"
 import { Step, Steps } from "fumadocs-ui/components/steps"
 
-import { CardStackAnimateWrapper } from "@/components/ui/our/common/cards-wrapper"
-import { PreviewWrapper } from "@/components/ui/our/common/preview-wrapper"
-import { ParallaxWrapper } from "@/components/ui/our/common/parallax-wrapper"
+import {
+  CardStackAnimateWrapper,
+  PreviewWrapper,
+  ParallaxWrapper,
+} from "@/components/ui/internal/mdx-dynamic-wrappers"
 
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/core/alert"
-import { Button } from "@/components/ui/core/button"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/internal/alert"
+import { Button } from "@/components/ui/primitives/button"
 import { cn } from "@/lib/utils"
 import {
   Accordion,
@@ -23,14 +25,14 @@ import { CodeBlockCommand } from "@/components/docs/code-block-command"
 import { CodeCollapsibleWrapper } from "@/components/docs/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/docs/code-tabs"
 import { ComponentPreview } from "@/components/docs/component-preview"
-import { ComponentPreviewEnhanced } from "@/components/docs/ComponentPreviewEnhanced"
+
 import { ComponentPreviewTabs } from "@/components/docs/component-preview-tabs"
 import { ComponentSource } from "@/components/docs/component-source"
 import { ComponentWrapper } from "@/components/docs/component-wrapper"
 import { ComponentsList } from "@/components/docs/components-list"
 import { CopyButton } from "@/components/docs/copy-button"
 import { TypeTable } from "@/components/docs/type-table"
-import { CodeBlock } from "@/components/ui/our/common/code-block"
+import { CodeBlock } from "@/components/ui/internal/code-block"
 
 function LinkedCard({
   className,
@@ -283,7 +285,7 @@ export const mdxComponents: MDXComponents = {
   CodeCollapsibleWrapper,
   CodeTabs,
   ComponentPreview,
-  ComponentPreviewEnhanced,
+
   ComponentPreviewTabs,
   ComponentSource,
   ComponentWrapper,

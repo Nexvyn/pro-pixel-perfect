@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "rings",
+  "type": "registry:ui",
+  "description": "rings animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/rings.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface RingsLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Rings Loader\n * CSS-animated SVG loader icon\n */\nexport function RingsLoader({\n  size = 24,\n  className,\n  ...props\n}: RingsLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Rings loading indicator\"\n      {...props}\n    >\n      <g fill=\"none\" fillRule=\"evenodd\" transform=\"translate(1 1)\" strokeWidth=\"2\">\r\n        <circle cx=\"22\" cy=\"22\" r=\"6\" stroke-opacity=\"0\">\r\n            <animate attributeName=\"r\"\r\n                 begin=\"1.5s\" dur=\"3s\"\r\n                 values=\"6;22\"\r\n                 calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-opacity\"\r\n                 begin=\"1.5s\" dur=\"3s\"\r\n                 values=\"1;0\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-width\"\r\n                 begin=\"1.5s\" dur=\"3s\"\r\n                 values=\"2;0\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </circle>\r\n        <circle cx=\"22\" cy=\"22\" r=\"6\" stroke-opacity=\"0\">\r\n            <animate attributeName=\"r\"\r\n                 begin=\"3s\" dur=\"3s\"\r\n                 values=\"6;22\"\r\n                 calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-opacity\"\r\n                 begin=\"3s\" dur=\"3s\"\r\n                 values=\"1;0\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n            <animate attributeName=\"stroke-width\"\r\n                 begin=\"3s\" dur=\"3s\"\r\n                 values=\"2;0\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </circle>\r\n        <circle cx=\"22\" cy=\"22\" r=\"8\">\r\n            <animate attributeName=\"r\"\r\n                 begin=\"0s\" dur=\"1.5s\"\r\n                 values=\"6;1;2;3;4;5;6\"\r\n                 calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </circle>\r\n    </g>\n    </svg>\n  );\n}\n\nexport default RingsLoader;\n"
+    }
+  ]
+}

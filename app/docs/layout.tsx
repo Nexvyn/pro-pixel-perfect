@@ -1,5 +1,5 @@
-import { docsConfig } from "@/app/config/docs"
-import { Footer } from "../(app)/Home/footer"
+import { docsConfig } from "@/config/docs"
+import { Footer } from "@/components/features/home/footer"
 import { DocsNavbar } from "@/components/docs/docs-navbar"
 import { DocsLayoutClient } from "./docs-layout-client"
 
@@ -17,20 +17,15 @@ import { DocsLayoutClient } from "./docs-layout-client"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full flex-col gap-2 p-2 dark:bg-[#181818]">
-      {/* Sticky Navbar with shrinking animation - solid background */}
+    <div className="dark:bg-background flex w-full flex-col gap-2 p-2">
       <div className="sticky top-2 z-50">
         <DocsNavbar />
       </div>
 
-      {/* Main content card with rounded corners and dashed border */}
       <section className="bg-background relative min-h-[calc(100vh-80px)] w-full rounded-3xl border border-dashed">
         {/* <CornerDecorations /> */}
-        <DocsLayoutClient items={docsConfig}>
-          {children}
-        </DocsLayoutClient>
+        <DocsLayoutClient items={docsConfig}>{children}</DocsLayoutClient>
       </section>
-      {/* Footer */}
       <Footer />
     </div>
   )

@@ -2,8 +2,8 @@ import { codeToHtml } from "shiki"
 import type { ShikiTransformer } from "shiki"
 
 const defaultThemes = {
-  light: "vitesse-light",
-  dark: "vitesse-dark",
+  light: "github-light",
+  dark: "github-dark",
 }
 
 // Transformers for line numbers and package manager detection

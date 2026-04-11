@@ -7,7 +7,7 @@ import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/docs/code-collapsible-wrapper"
 import { CopyButton } from "@/components/docs/copy-button"
-import { getIconForLanguageExtension } from "@/components/ui/icons/animated/legacy-icon"
+import { getIconForLanguageExtension } from "@/components/icons/animated/legacy-icon"
 
 export async function ComponentSource({
   name,
@@ -34,7 +34,6 @@ export async function ComponentSource({
   if (name) {
     const item = await getRegistryItem(name)
     if (fileName) {
-      // Find the specific file by name
       const targetFile = item?.files?.find((file: { path?: string; content?: string } | string) => {
         if (typeof file === "string") {
           return file.endsWith(`${fileName}.tsx`) || file.endsWith(`${fileName}.ts`)

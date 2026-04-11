@@ -1,5 +1,5 @@
-import CardStackAnimate from "@/registry/new-york-v4/ui/cards"
+import CardStackAnimate from "@/components/ui/compositions/cards"
 
 export default function CardsPlayground() {
-    return <CardStackAnimate />
+  return <CardStackAnimate />
 }

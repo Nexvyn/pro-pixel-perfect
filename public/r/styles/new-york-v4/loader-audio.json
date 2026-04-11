@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "audio",
+  "type": "registry:ui",
+  "description": "audio animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/audio.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface AudioLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Audio Loader\n * CSS-animated SVG loader icon\n */\nexport function AudioLoader({\n  size = 24,\n  className,\n  ...props\n}: AudioLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Audio loading indicator\"\n      {...props}\n    >\n      <g transform=\"matrix(1 0 0 -1 0 80)\">\r\n        <rect width=\"10\" height=\"20\" rx=\"3\">\r\n            <animate attributeName=\"height\"\r\n                 begin=\"0s\" dur=\"4.3s\"\r\n                 values=\"20;45;57;80;64;32;66;45;64;23;66;13;64;56;34;34;2;23;76;79;20\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </rect>\r\n        <rect x=\"15\" width=\"10\" height=\"80\" rx=\"3\">\r\n            <animate attributeName=\"height\"\r\n                 begin=\"0s\" dur=\"2s\"\r\n                 values=\"80;55;33;5;75;23;73;33;12;14;60;80\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </rect>\r\n        <rect x=\"30\" width=\"10\" height=\"50\" rx=\"3\">\r\n            <animate attributeName=\"height\"\r\n                 begin=\"0s\" dur=\"1.4s\"\r\n                 values=\"50;34;78;23;56;23;34;76;80;54;21;50\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </rect>\r\n        <rect x=\"45\" width=\"10\" height=\"30\" rx=\"3\">\r\n            <animate attributeName=\"height\"\r\n                 begin=\"0s\" dur=\"2s\"\r\n                 values=\"30;45;13;80;56;72;45;76;34;23;67;30\" calcMode=\"linear\"\r\n                 repeatCount=\"indefinite\" />\r\n        </rect>\r\n    </g>\n    </svg>\n  );\n}\n\nexport default AudioLoader;\n"
+    }
+  ]
+}

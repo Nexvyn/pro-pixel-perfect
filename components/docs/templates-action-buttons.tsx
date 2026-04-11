@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { ExternalLink, ExternalLinkIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/core/button"
+import { Button } from "@/components/ui/primitives/button"
 
 interface LiveDemo {
   title: string

@@ -11,7 +11,6 @@ export const siteConfig = {
   navItems: [
     { title: "Docs", href: "/docs" },
     { title: "Icons", href: "/icons" },
-    { title: "Sponsors", href: "/sponsors" },
   ],
 } as const
 

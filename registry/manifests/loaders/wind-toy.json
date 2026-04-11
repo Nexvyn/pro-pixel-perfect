@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "wind-toy",
+  "type": "registry:ui",
+  "description": "wind toy animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/wind-toy.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

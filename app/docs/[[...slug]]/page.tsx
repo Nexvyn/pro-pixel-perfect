@@ -5,10 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { findNeighbour } from "fumadocs-core/page-tree"
 import { createStaticOGMetadata } from "@/lib/metadata"
 import { source } from "@/lib/source"
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { absoluteUrl } from "@/lib/utils"
-import { Button } from "@/components/ui/core/button"
-// import { BookmarkButton } from "@/components/ui/bookmark-button";
+import { Button } from "@/components/ui/primitives/button"
 import { ViewOptions } from "@/components/docs/page-actions"
 import { ClientTOC } from "@/components/docs/client-toc"
 import { CopyPageButton } from "@/components/docs/copy-page-button"
@@ -35,15 +33,16 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
     notFound()
   }
 
+  const base = createStaticOGMetadata(doc.title, doc.description)
   return {
-    ...createStaticOGMetadata(doc.title, doc.description),
+    ...base,
     openGraph: {
-      ...createStaticOGMetadata(doc.title, doc.description).openGraph,
+      ...base.openGraph,
       type: "article",
       url: absoluteUrl(page.url),
     },
     twitter: {
-      ...createStaticOGMetadata(doc.title, doc.description).twitter,
+      ...base.twitter,
       creator: "@nexvyn-ui",
     },
   }
@@ -65,14 +64,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
 
   return (
     <>
-      {/* Page Header */}
       <div className="flex flex-col gap-4 border-b pb-6">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-2">
             <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight">{doc.title}</h1>
-
           </div>
-          {/* Navigation arrows */}
           <div className="flex shrink-0 items-center gap-1 pt-1">
             {neighbours.previous && (
               <Button variant="ghost" size="icon" className="size-8" asChild>
@@ -93,7 +89,6 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
           </div>
         </div>
 
-        {/* Actions bar */}
         <div className="flex items-center justify-between gap-2">
           {doc.description ? (
             <p className="text-muted-foreground text-lg text-balance">{doc.description}</p>
@@ -104,20 +99,13 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
             markdownUrl={`/llms.mdx${page.url.replace("/docs", "")}`}
             githubUrl={`https://github.com/${owner}/${repo}/blob/main/content/docs/${page.path}`}
           />
-          {/* <BookmarkButton
-            className="ml-auto"
-            title={doc.title || "Documentation"}
-            href={page.url}
-          /> */}
         </div>
       </div>
 
-      {/* MDX Content with prose styling */}
       <div id="docs-content" className="prose prose-neutral dark:prose-invert max-w-none py-8">
         <MDX components={mdxComponents} />
       </div>
 
-      {/* Previous/Next Navigation */}
       <div className="flex items-center justify-between gap-4 border-t py-8">
         {neighbours.previous ? (
           <Link
@@ -149,7 +137,6 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
         )}
       </div>
 
-      {/* Right-side TOC - sticky position within content area */}
       <div className="absolute top-0 right-0 hidden h-full w-48 xl:block">
         <div className="sticky top-24 h-[calc(100vh-120px)]">
           <ClientTOC toc={page.data.toc} />

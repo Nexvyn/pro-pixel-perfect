@@ -7,6 +7,43 @@ description: Utility functions and helpers for nexvyn/ui components
 
 This page documents utility functions and helpers available in nexvyn/ui.
 
-## Coming Soon
+## `cn()` — Conditional Class Names
 
-Utility documentation is being added. Check back soon!
+Merges Tailwind CSS classes with `clsx` and resolves conflicts with `tailwind-merge`.
+
+```ts
+import { cn } from "@/lib/utils"
+
+cn("text-red-500", "bg-blue-500")           // → "text-red-500 bg-blue-500"
+cn("px-2 py-1", "px-4")                   // → "py-1 px-4" (px-4 wins)
+cn({ "text-sm": isSmall }, "font-bold")    // → conditionally applied
+```
+
+## `mergeRefs()` — Combine Multiple Refs
+
+Merges multiple refs into a single callback ref. Useful when you need to pass a ref to multiple consumers.
+
+```ts
+import { mergeRefs } from "@/lib/utils"
+import { useRef } from "react"
+
+function Example() {
+  const localRef = useRef<HTMLDivElement>(null)
+  const forwardedRef = useRef<HTMLDivElement>(null)
+
+  return <div ref={mergeRefs(localRef, forwardedRef)} />
+}
+```
+
+## `absoluteUrl()` — Build Absolute URLs
+
+Creates absolute URLs from relative paths, handling the base URL configuration.
+
+```ts
+import { absoluteUrl } from "@/lib/utils"
+
+absoluteUrl("/docs")          // → "https://nexvyn.com/docs"
+absoluteUrl("/og/docs/page") // → "https://nexvyn.com/og/docs/page"
+```
+
+All utilities are located in `lib/utils.ts` and are included in registry installs.

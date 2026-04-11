@@ -43,10 +43,20 @@ import { MorphingText } from "@/components/ui/morphing-text"
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `texts` | `string[]` | Required | Array of words to cycle through |
-| `className` | `string` | - | Additional CSS classes |
+<TypeTable
+  type={{
+    texts: {
+      description: "Array of words to cycle through",
+      type: "string[]",
+      default: "required",
+    },
+    className: {
+      description: "Additional CSS classes",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
 
 ## Features
 
@@ -60,16 +70,11 @@ import { MorphingText } from "@/components/ui/morphing-text"
 ### With Custom Styling
 
 ```tsx
-<MorphingText
-  texts={["Design", "Build", "Ship"]}
-  className="text-6xl text-primary"
-/>
+<MorphingText texts={["Design", "Build", "Ship"]} className="text-primary text-6xl" />
 ```
 
 ### Multiple Words
 
 ```tsx
-<MorphingText
-  texts={["React", "Next.js", "TypeScript", "Tailwind"]}
-/>
+<MorphingText texts={["React", "Next.js", "TypeScript", "Tailwind"]} />
 ```

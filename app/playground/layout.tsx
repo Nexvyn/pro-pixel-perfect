@@ -1,11 +1,7 @@
-export default function PlaygroundLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
-    return (
-        <>
-            <style>{`
+export default function PlaygroundLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <style>{`
         html::-webkit-scrollbar,
         body::-webkit-scrollbar {
           display: none;
@@ -15,7 +11,7 @@ export default function PlaygroundLayout({
           scrollbar-width: none;
         }
       `}</style>
-            {children}
-        </>
-    )
+      {children}
+    </>
+  )
 }

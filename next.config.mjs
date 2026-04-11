@@ -13,9 +13,17 @@ const config = {
     optimizePackageImports: [
       "motion",
       "@paper-design/shaders-react",
-      "lucide-react",
-      "react-icons/fa6"
+      "lucide-react"
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/icons-legacy",
+        destination: "/icons",
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "blocks-shuffle-2",
+  "type": "registry:ui",
+  "description": "blocks shuffle 2 animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/blocks-shuffle-2.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

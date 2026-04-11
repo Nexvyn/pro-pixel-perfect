@@ -2,9 +2,12 @@
 
 import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { TerminalIcon, TerminalIconHandle } from "@/components/ui/icons/animated/terminal-icon"
-import { AnimatedClipboardIcon, AnimatedIconHandle } from "@/components/ui/icons/animated/animated-clipboard-icon"
-import { AnimatedCheckIcon } from "@/components/ui/icons/animated/animated-check-icon"
+import { TerminalIcon, TerminalIconHandle } from "@/components/features/home/icons/terminal-icon"
+import {
+  AnimatedClipboardIcon,
+  AnimatedIconHandle,
+} from "@/components/features/home/icons/animated-clipboard-icon"
+import { AnimatedCheckIcon } from "@/components/features/home/icons/animated-check-icon"
 
 interface CliCopyBoxProps {
   command?: string

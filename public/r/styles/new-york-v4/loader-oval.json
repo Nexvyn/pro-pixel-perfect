@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "oval",
+  "type": "registry:ui",
+  "description": "oval animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/oval.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface OvalLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Oval Loader\n * CSS-animated SVG loader icon\n */\nexport function OvalLoader({\n  size = 24,\n  className,\n  ...props\n}: OvalLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Oval loading indicator\"\n      {...props}\n    >\n      <g fill=\"none\" fillRule=\"evenodd\">\r\n        <g transform=\"translate(1 1)\" strokeWidth=\"2\">\r\n            <circle stroke-opacity=\".5\" cx=\"18\" cy=\"18\" r=\"18\"/>\r\n            <path d=\"M36 18c0-9.94-8.06-18-18-18\">\r\n                <animateTransform\r\n                    attributeName=\"transform\"\r\n                    type=\"rotate\"\r\n                    from=\"0 18 18\"\r\n                    to=\"360 18 18\"\r\n                    dur=\"1s\"\r\n                    repeatCount=\"indefinite\"/>\r\n            </path>\r\n        </g>\r\n    </g>\n    </svg>\n  );\n}\n\nexport default OvalLoader;\n"
+    }
+  ]
+}

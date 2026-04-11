@@ -1,10 +1,5 @@
 import type { Metadata } from "next"
-
-const siteConfig = {
-  name: "nexvyn/ui",
-  description: "Beautiful components. Infinite customization.",
-  url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-}
+import { siteConfig } from "./config"
 
 export function createStaticOGMetadata(title: string, description: string): Metadata {
   return {

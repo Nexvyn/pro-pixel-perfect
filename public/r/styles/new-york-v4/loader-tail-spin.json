@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "tail-spin",
+  "type": "registry:ui",
+  "description": "tail spin animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/tail-spin.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface TailSpinLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Tail Spin Loader\n * CSS-animated SVG loader icon\n */\nexport function TailSpinLoader({\n  size = 24,\n  className,\n  ...props\n}: TailSpinLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Tail Spin loading indicator\"\n      {...props}\n    >\n      <defs>\r\n        <linearGradient x1=\"8.042%\" y1=\"0%\" x2=\"65.682%\" y2=\"23.865%\" id=\"a\">\r\n            <stop stopColor=\"#fff\" stopOpacity=\"0\" offset=\"0%\"/>\r\n            <stop stopColor=\"#fff\" stopOpacity=\".631\" offset=\"63.146%\"/>\r\n            <stop stopColor=\"#fff\" offset=\"100%\"/>\r\n        </linearGradient>\r\n    </defs>\r\n    <g fill=\"none\" fillRule=\"evenodd\">\r\n        <g transform=\"translate(1 1)\">\r\n            <path d=\"M36 18c0-9.94-8.06-18-18-18\" id=\"Oval-2\" stroke=\"url(#a)\" strokeWidth=\"2\">\r\n                <animateTransform\r\n                    attributeName=\"transform\"\r\n                    type=\"rotate\"\r\n                    from=\"0 18 18\"\r\n                    to=\"360 18 18\"\r\n                    dur=\"0.9s\"\r\n                    repeatCount=\"indefinite\" />\r\n            </path>\r\n            <circle fill=\"#fff\" cx=\"36\" cy=\"18\" r=\"1\">\r\n                <animateTransform\r\n                    attributeName=\"transform\"\r\n                    type=\"rotate\"\r\n                    from=\"0 18 18\"\r\n                    to=\"360 18 18\"\r\n                    dur=\"0.9s\"\r\n                    repeatCount=\"indefinite\" />\r\n            </circle>\r\n        </g>\r\n    </g>\n    </svg>\n  );\n}\n\nexport default TailSpinLoader;\n"
+    }
+  ]
+}

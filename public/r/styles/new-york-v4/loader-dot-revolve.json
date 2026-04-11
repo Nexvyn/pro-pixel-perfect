@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "dot-revolve",
+  "type": "registry:ui",
+  "description": "dot revolve animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/dot-revolve.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface DotRevolveLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Dot Revolve Loader\n * CSS-animated SVG loader icon\n */\nexport function DotRevolveLoader({\n  size = 24,\n  className,\n  ...props\n}: DotRevolveLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Dot Revolve loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_7WDj{transform-origin:center;animation:spinner_PBVY .75s linear infinite}@keyframes spinner_PBVY{100%{transform:rotate(360deg)}}`}} /><path d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z\" opacity=\".25\"/><circle className=\"spinner_7WDj\" cx=\"12\" cy=\"2.5\" r=\"1.5\"/>\n    </svg>\n  );\n}\n\nexport default DotRevolveLoader;\n"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "bars-rotate-fade",
+  "type": "registry:ui",
+  "description": "bars rotate fade animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/bars-rotate-fade.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface BarsRotateFadeLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Bars Rotate Fade Loader\n * CSS-animated SVG loader icon\n */\nexport function BarsRotateFadeLoader({\n  size = 24,\n  className,\n  ...props\n}: BarsRotateFadeLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Bars Rotate Fade loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}`}} /><g className=\"spinner_OSmW\"><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" opacity=\".14\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(30 12 12)\" opacity=\".29\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(60 12 12)\" opacity=\".43\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(90 12 12)\" opacity=\".57\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(120 12 12)\" opacity=\".71\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(150 12 12)\" opacity=\".86\"/><rect x=\"11\" y=\"1\" width=\"2\" height=\"5\" transform=\"rotate(180 12 12)\"/></g>\n    </svg>\n  );\n}\n\nexport default BarsRotateFadeLoader;\n"
+    }
+  ]
+}

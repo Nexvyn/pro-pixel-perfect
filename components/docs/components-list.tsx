@@ -28,6 +28,21 @@ const componentsList = [
     href: "/docs/components/parallax",
     description: "Parallax scrolling effects",
   },
+  {
+    name: "Mouse Follower",
+    href: "/docs/components/mouse-follower",
+    description: "Interactive cursor trail with animated previews",
+  },
+  {
+    name: "Morphing Text",
+    href: "/docs/components/morphing-text",
+    description: "Blur-driven text morphing for expressive headings",
+  },
+  {
+    name: "Spinning Text",
+    href: "/docs/components/spinning-text",
+    description: "Circular text animation for badges and hero accents",
+  },
 ]
 
 export function ComponentsList() {

@@ -6,7 +6,7 @@ import { toast } from "sonner"
 
 import { siteConfig } from "@/lib/config"
 import { useGitHubStarPrompt } from "@/hooks/use-github-star-prompt"
-import { Button } from "@/components/ui/core/button"
+import { Button } from "@/components/ui/primitives/button"
 
 export function GitHubStarPrompt() {
   const { shouldShow, dismiss, dismissForever, setToastActive, isToastActive } =

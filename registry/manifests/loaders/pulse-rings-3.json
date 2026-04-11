@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "pulse-rings-3",
+  "type": "registry:ui",
+  "description": "pulse rings 3 animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/pulse-rings-3.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

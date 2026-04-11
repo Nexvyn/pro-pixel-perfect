@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "eclipse-half",
+  "type": "registry:ui",
+  "description": "eclipse half animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/eclipse-half.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface EclipseHalfLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Eclipse Half Loader\n * CSS-animated SVG loader icon\n */\nexport function EclipseHalfLoader({\n  size = 24,\n  className,\n  ...props\n}: EclipseHalfLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Eclipse Half loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_Pcrv{transform-origin:center;animation:spinner_xeMo .6s linear infinite}@keyframes spinner_xeMo{100%{transform:rotate(360deg)}}`}} /><path className=\"spinner_Pcrv\" d=\"M2,12A10.94,10.94,0,0,1,5,4.65c-.21-.19-.42-.36-.62-.55h0A11,11,0,0,0,12,23c.34,0,.67,0,1-.05C6,23,2,17.74,2,12Z\"/>\n    </svg>\n  );\n}\n\nexport default EclipseHalfLoader;\n"
+    }
+  ]
+}

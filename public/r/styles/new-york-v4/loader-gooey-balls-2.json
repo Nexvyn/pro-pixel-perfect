@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "gooey-balls-2",
+  "type": "registry:ui",
+  "description": "gooey balls 2 animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/gooey-balls-2.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface GooeyBalls2LoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Gooey Balls 2 Loader\n * CSS-animated SVG loader icon\n */\nexport function GooeyBalls2Loader({\n  size = 24,\n  className,\n  ...props\n}: GooeyBalls2LoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Gooey Balls 2 loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_8XMC{animation:spinner_0zVw 2s infinite}.spinner_WWWR{animation:spinner_Aojx 2s infinite}.spinner_LvYV{transform-origin:center;animation:spinner_xygp .75s linear infinite}@keyframes spinner_0zVw{0%{animation-timing-function:cubic-bezier(0.36,.62,.43,.99);cx:5px}50%{animation-timing-function:cubic-bezier(0.79,0,.58,.57);cx:8px}}@keyframes spinner_Aojx{0%{animation-timing-function:cubic-bezier(0.36,.62,.43,.99);cx:19px}50%{animation-timing-function:cubic-bezier(0.79,0,.58,.57);cx:16px}}@keyframes spinner_xygp{100%{transform:rotate(360deg)}}`}} /><defs><filter id=\"spinner-gF01\"><feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"1\" result=\"y\"/><feColorMatrix in=\"y\" mode=\"matrix\" values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7\" result=\"z\"/><feBlend in=\"SourceGraphic\" in2=\"z\"/></filter></defs><g className=\"spinner_LvYV\" filter=\"url(#spinner-gF01)\"><circle className=\"spinner_8XMC\" cx=\"5\" cy=\"12\" r=\"4\"/><circle className=\"spinner_WWWR\" cx=\"19\" cy=\"12\" r=\"4\"/></g>\n    </svg>\n  );\n}\n\nexport default GooeyBalls2Loader;\n"
+    }
+  ]
+}

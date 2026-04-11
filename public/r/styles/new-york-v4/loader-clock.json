@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "name": "clock",
+  "type": "registry:ui",
+  "description": "clock animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/clock.tsx",
+      "type": "registry:ui",
+      "content": "// @ts-nocheck\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\nexport interface ClockLoaderProps extends Omit<ComponentProps<\"svg\">, \"ref\"> {\n  /**\n   * Icon size in pixels\n   * @default 24\n   */\n  size?: number;\n  /**\n   * Additional CSS classes\n   */\n  className?: string;\n}\n\n/**\n * Clock Loader\n * CSS-animated SVG loader icon\n */\nexport function ClockLoader({\n  size = 24,\n  className,\n  ...props\n}: ClockLoaderProps) {\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"inline-block flex-shrink-0\", className)}\n      role=\"img\"\n      aria-label=\"Clock loading indicator\"\n      {...props}\n    >\n      <style dangerouslySetInnerHTML={{__html: `.spinner_d9Sa{transform-origin:center}.spinner_qQQY{animation:spinner_ZpfF 9s linear infinite}.spinner_pote{animation:spinner_ZpfF .75s linear infinite}@keyframes spinner_ZpfF{100%{transform:rotate(360deg)}}`}} /><path d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z\"/><rect className=\"spinner_d9Sa spinner_qQQY\" x=\"11\" y=\"6\" rx=\"1\" width=\"2\" height=\"7\"/><rect className=\"spinner_d9Sa spinner_pote\" x=\"11\" y=\"11\" rx=\"1\" width=\"2\" height=\"9\"/>\n    </svg>\n  );\n}\n\nexport default ClockLoader;\n"
+    }
+  ]
+}

@@ -3,15 +3,13 @@ import Image from "next/image"
 
 import { ComponentPreviewTabs } from "@/components/docs/component-preview-tabs"
 import { ComponentSource } from "@/components/docs/component-source"
-import { Index } from "@/registry/__index__"
+import { Index } from "./preview-registry"
 
-// Map component names to their full-page playground URLs
 const EXPAND_URLS: Record<string, string> = {
   "cards-demo": "/playground/cards",
   "parallax-demo": "/playground/parallax",
 }
 
-// Loading skeleton for lazy components
 function ComponentSkeleton() {
   return (
     <div className="flex min-h-[200px] w-full items-center justify-center">
@@ -58,20 +56,6 @@ export function ComponentPreview({
   if (type === "block") {
     return (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-4">
-        <Image
-          src={`/r/styles/new-york-v4/${name}-light.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
-        />
-        <Image
-          src={`/r/styles/new-york-v4/${name}-dark.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
-        />
         <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
           <iframe src={`/view/${name}`} className="size-full" />
         </div>

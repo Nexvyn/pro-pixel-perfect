@@ -4,11 +4,10 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 
-import { useDataFast } from "@/lib/datafast-client"
-import { Event, trackEvent } from "@/lib/events"
+import { useDataFast, trackEvent, type Event } from "@/lib/datafast-client"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/core/button"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/core/tooltip"
+import { Button } from "@/components/ui/primitives/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/internal/tooltip"
 
 export function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value)

@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema.json",
+  "name": "twitter",
+  "type": "registry:ui",
+  "description": "twitter component",
+  "dependencies": [],
+  "devDependencies": ["@types/react"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/icons/animated/twitter.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

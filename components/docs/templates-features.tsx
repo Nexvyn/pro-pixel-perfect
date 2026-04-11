@@ -1,4 +1,4 @@
-import { Icons } from "@/components/ui/our/common"
+import { Icons } from "@/components/icons/animated/legacy-icon"
 
 const descriptions = ["Time saved", "Money saved", "Pages", "Components"]
 const defaultTitles = ["4", "8", "12", "16"]

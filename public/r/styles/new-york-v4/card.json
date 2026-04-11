@@ -1,17 +1,37 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card",
   "type": "registry:ui",
-  "title": "Card",
-  "description": "Card component",
+  "description": "A card component with header, title, description, content, and footer sections",
   "dependencies": [],
+  "devDependencies": ["@types/react"],
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/new-york-v4/ui/card.tsx",
+      "path": "components/ui/primitives/card.tsx",
       "type": "registry:ui",
-      "target": "components/ui/card.tsx",
       "content": "import * as React from \"react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card\"\r\n      className={cn(\r\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-header\"\r\n      className={cn(\r\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-title\"\r\n      className={cn(\"leading-none font-semibold\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-description\"\r\n      className={cn(\"text-muted-foreground text-sm\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-action\"\r\n      className={cn(\"col-start-2 row-span-2 row-start-1 self-start justify-self-end\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return <div data-slot=\"card-content\" className={cn(\"px-6\", className)} {...props} />\r\n}\r\n\r\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-footer\"\r\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent }\r\n"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\n/**\n * Merges class names with tailwind-merge and clsx\n */\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\n/**\n * Merges multiple refs into a single ref callback\n */\nexport function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> | null {\n  if (refs.every((ref) => ref === null || ref === undefined)) {\n    return null\n  }\n\n  return (value) => {\n    refs.forEach((ref) => {\n      if (typeof ref === \"function\") {\n        ref(value)\n      } else if (ref != null) {\n        ;(ref as React.MutableRefObject<T | null>).current = value\n      }\n    })\n  }\n}\n\n/**\n * Returns the absolute URL for a given path\n */\nexport function absoluteUrl(path: string): string {\n  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || \"http://localhost:3000\"\n  return `${baseUrl}${path.startsWith(\"/\") ? path : `/${path}`}`\n}\n"
     }
-  ]
+  ],
+  "tailwind": {
+    "config": {
+      "plugins": []
+    }
+  },
+  "cssVars": {
+    "light": {
+      "card": "0 0% 100%",
+      "card-foreground": "0 0% 3.9%",
+      "border": "0 0% 89.8%"
+    },
+    "dark": {
+      "card": "0 0% 3.9%",
+      "card-foreground": "0 0% 98%",
+      "border": "0 0% 14.9%"
+    }
+  }
 }

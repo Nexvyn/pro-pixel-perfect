@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "bouncing-ball",
+  "type": "registry:ui",
+  "description": "bouncing ball animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/bouncing-ball.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

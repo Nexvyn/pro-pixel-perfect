@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/core/collapsible"
+} from "@/components/ui/internal/collapsible"
 
 export function CodeCollapsibleWrapper({
   className,

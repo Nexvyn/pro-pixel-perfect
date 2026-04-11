@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "bars-rotate-fade",
+  "type": "registry:ui",
+  "description": "bars rotate fade animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/bars-rotate-fade.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

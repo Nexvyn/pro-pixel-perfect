@@ -28,7 +28,7 @@ export default [
       // Basic rules - Next.js specific rules can be added later
       '@typescript-eslint/no-unused-vars': 'warn',
       'no-unused-vars': 'off', // Turn off base rule as it conflicts with @typescript-eslint version
-      'no-console': 'off',
+      'no-console': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn', // Allow 'any' type but warn about it
       '@typescript-eslint/no-empty-object-type': 'warn', // Allow empty object types but warn
     },

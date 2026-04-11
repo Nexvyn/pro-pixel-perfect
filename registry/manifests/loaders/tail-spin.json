@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema.json",
+  "name": "tail-spin",
+  "type": "registry:ui",
+  "description": "tail spin animated SVG loader",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "registry/generated/loaders/tail-spin.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

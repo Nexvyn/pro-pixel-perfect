@@ -3,6 +3,10 @@ title: Parallax Scroll
 description: A smooth parallax scrolling component with layered image animations.
 ---
 
+<Callout type="warn">
+  The default images use placeholder URLs. Replace them with your own images before production use.
+</Callout>
+
 <ComponentPreview
   name="parallax-demo"
   description="Parallax scroll with layered image animations"
@@ -96,3 +100,56 @@ scrollTrigger: {
 }
 ```
 
+## Props
+
+<TypeTable
+  type={{
+    mainImage: {
+      description: "Main background image configuration",
+      type: "{ src: string; alt: string; className?: string }",
+      default: "placeholder",
+    },
+    layers: {
+      description: "Array of parallax layer configurations",
+      type: "ParallaxLayer[]",
+      default: "placeholder layers",
+    },
+    secondaryImage: {
+      description: "Secondary image configuration",
+      type: "{ src: string; alt: string; className?: string }",
+      default: "placeholder",
+    },
+    className: {
+      description: "Additional CSS classes",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
+
+### ParallaxLayer
+
+<TypeTable
+  type={{
+    src: {
+      description: "Layer image URL",
+      type: "string",
+      default: "required",
+    },
+    alt: {
+      description: "Alt text for accessibility",
+      type: "string",
+      default: "required",
+    },
+    className: {
+      description: "CSS classes for positioning",
+      type: "string",
+      default: "undefined",
+    },
+    speed: {
+      description: "Parallax scroll speed (negative values move up)",
+      type: "number",
+      default: "-150",
+    },
+  }}
+/>

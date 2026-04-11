@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "motion/react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/core/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/core/tabs"
-import { V0Icon, TerminalIcon } from "@/components/ui/icons/animated/action-icons"
+import { Button } from "@/components/ui/primitives/button"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/internal/tabs"
+import { V0Icon, TerminalIcon } from "@/components/features/home/icons/action-icons"
 
 // Fullscreen Modal Component - Uses iframe for scroll-triggered components
 function FullscreenModal({
@@ -95,7 +95,7 @@ function FullscreenModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm md:p-8"
           onClick={onClose}
         >
           <motion.div
@@ -105,8 +105,10 @@ function FullscreenModal({
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
             className={cn(
-              "relative overflow-hidden rounded-2xl border bg-background shadow-2xl",
-              isBrowserFullscreen ? "h-screen w-screen max-h-screen max-w-none rounded-none" : "h-full w-full max-w-6xl max-h-[85vh]"
+              "bg-background relative overflow-hidden rounded-2xl border shadow-2xl",
+              isBrowserFullscreen
+                ? "h-screen max-h-screen w-screen max-w-none rounded-none"
+                : "h-full max-h-[85vh] w-full max-w-6xl"
             )}
             onClick={(e) => e.stopPropagation()}
           >
@@ -115,45 +117,45 @@ function FullscreenModal({
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 backdrop-blur-sm transition-colors hover:bg-muted"
+                className="border-border/50 bg-background/50 hover:bg-muted flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <Sun className="h-5 w-5 text-foreground" />
+                  <Sun className="text-foreground h-5 w-5" />
                 ) : (
-                  <Moon className="h-5 w-5 text-foreground" />
+                  <Moon className="text-foreground h-5 w-5" />
                 )}
               </button>
 
               {/* Browser Fullscreen Toggle */}
               <button
                 onClick={toggleBrowserFullscreen}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 backdrop-blur-sm transition-colors hover:bg-muted"
+                className="border-border/50 bg-background/50 hover:bg-muted flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm transition-colors"
                 aria-label={isBrowserFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
               >
                 {isBrowserFullscreen ? (
-                  <Minimize2 className="h-5 w-5 text-foreground" />
+                  <Minimize2 className="text-foreground h-5 w-5" />
                 ) : (
-                  <Maximize2 className="h-5 w-5 text-foreground" />
+                  <Maximize2 className="text-foreground h-5 w-5" />
                 )}
               </button>
 
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 backdrop-blur-sm transition-colors hover:bg-muted"
+                className="border-border/50 bg-background/50 hover:bg-muted flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm transition-colors"
                 aria-label="Close fullscreen"
               >
-                <X className="h-5 w-5 text-foreground" />
+                <X className="text-foreground h-5 w-5" />
               </button>
             </div>
 
             {/* Iframe for full component with its own scroll context */}
             <iframe
               src={iframeSrc}
-              className="h-full w-full border-0 bg-background scrollbar-none"
+              className="bg-background scrollbar-none h-full w-full border-0"
               title="Component Preview"
-              style={{ scrollbarWidth: 'none' }}
+              style={{ scrollbarWidth: "none" }}
             />
           </motion.div>
         </motion.div>
@@ -162,7 +164,6 @@ function FullscreenModal({
     document.body
   )
 }
-
 
 // Map component names to their playground URLs for iframe
 const PLAYGROUND_URLS: Record<string, string> = {
